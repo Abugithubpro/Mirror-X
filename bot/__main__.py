@@ -37,18 +37,18 @@ def stats(update, context):
     mem_t = get_readable_file_size(memory.total)
     mem_a = get_readable_file_size(memory.available)
     mem_u = get_readable_file_size(memory.used)
-    stats = f'<b>Commit Date:</b> {last_commit}\n\n'\
-            f'<b>Bot Uptime:</b> {currentTime}\n\n'\
-            f'<b>Total Disk Space:</b> {total}\n'\
-            f'<b>Used:</b> {used} | <b>Free:</b> {free}\n\n'\
-            f'<b>Up:</b> {sent} | '\
-            f'<b>Down:</b> {recv}\n\n'\
-            f'<b>CPU:</b> {cpuUsage}% | '\
-            f'<b>RAM:</b> {mem_p}% | '\
-            f'<b>DISK:</b> {disk}%\n\n'\
-            f'<b>Total Memory:</b> {mem_t}\n'\
-            f'<b>Free:</b> {mem_a} | '\
-            f'<b>Used:</b> {mem_u}\n\n'
+    stats = f'<b>Commit Date - </b> {last_commit}\n\n'\
+            f'<b>Bot Uptime - </b> {currentTime}\n\n'\
+            f'<b>Total Disk Space - </b> {total}\n'\
+            f'<b>Used - </b> {used} ⥃ <b> - Free - </b> {free}\n\n'\
+            f'<b>Up - </b> {sent} ⥃ '\
+            f'<b>Down - </b> {recv}\n\n'\
+            f'<b>CPU - </b> {cpuUsage}  | '\
+            f'<b>RAM - </b> {mem_p}  ⥃ '\
+            f'<b>DISK - </b> {disk} \n\n'\
+            f'<b>Total Memory - </b> {mem_t}\n'\
+            f'<b>Free - </b> {mem_a} ⥃ '\
+            f'<b>Used - </b> {mem_u}\n\n'
     sendMessage(stats, context.bot, update.message)
 
 
@@ -59,15 +59,15 @@ def start(update, context):
     reply_markup = buttons.build_menu(2)
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
-This bot can mirror all your links to Google Drive or to telegram!
+Yo Whatsup Man ! For Any Dot ASK To jackssmit
 Type /{BotCommands.HelpCommand} to get a list of available commands
 '''
         sendMarkup(start_string, context.bot, update.message, reply_markup)
     else:
-        sendMarkup('Not an Authorized user, deploy your own helios-mirror-leech bot', context.bot, update.message, reply_markup)
+        sendMarkup('Bro Your Not Authorized user', context.bot, update.message, reply_markup)
 
 def restart(update, context):
-    restart_message = sendMessage("Restarting...", context.bot, update.message)
+    restart_message = sendMessage("Trying To Rebooting...", context.bot, update.message)
     if Interval:
         Interval[0].cancel()
         Interval.clear()
@@ -149,11 +149,11 @@ NOTE: Try each command without any perfix to see more detalis.<br><br>
 <b>/{BotCommands.RssSettingsCommand}</b>[query]: Rss Settings (Only Owner & Sudo).<br><br>
 '''
 help_string = f'''
-Hei, Need Help!!
+Bro, Need Any Help!
 '''
 try:
     help = telegraph.create_page(
-        title='Helios-Mirror Help',
+        title='Github Database',
         content=help_string_telegraph,
     )["path"]
 except Exception as err:
@@ -161,7 +161,7 @@ except Exception as err:
     pass
 def bot_help(update, context):
     button = ButtonMaker()
-    button.buildbutton("Click Here", f"https://graph.org/{help}")
+    button.buildbutton("Telegraph.org", f"https://graph.org/{help}")
     reply_markup = button.build_menu(1)
     sendMarkup(help_string, context.bot, update.message, reply_markup)
 def main():
@@ -173,15 +173,15 @@ def main():
                 if ospath.isfile(".restartmsg"):
                     with open(".restartmsg") as f:
                         chat_id, msg_id = map(int, f)
-                    msg = 'Restarted Successfully!'
+                    msg = 'System Rebooted All Service Has been Restarted'
                 else:
-                    msg = 'Bot Restarted!'
+                    msg = 'System Rebooted All Service Has been Restarted in - 10s'
                 for tag, links in data.items():
                      msg += f"\n\n{tag}: "
                      for index, link in enumerate(links, start=1):
                          msg += f" <a href='{link}'>{index}</a> |"
                          if len(msg.encode()) > 4000:
-                             if 'Restarted Successfully!' in msg and cid == chat_id:
+                             if 'System Rebooted All Service Has been Restarted' in msg and cid == chat_id:
                                  bot.editMessageText(msg, chat_id, msg_id, parse_mode='HTML', disable_web_page_preview=True)
                                  osremove(".restartmsg")
                              else:
@@ -190,7 +190,7 @@ def main():
                                  except Exception as e:
                                      LOGGER.error(e)
                              msg = ''
-                if 'Restarted Successfully!' in msg and cid == chat_id:
+                if 'System Rebooted All Service Has been Restarted in - 10s' in msg and cid == chat_id:
                      bot.editMessageText(msg, chat_id, msg_id, parse_mode='HTML', disable_web_page_preview=True)
                      osremove(".restartmsg")
                 else:
@@ -202,12 +202,12 @@ def main():
     if ospath.isfile(".restartmsg"):
         with open(".restartmsg") as f:
             chat_id, msg_id = map(int, f)
-        bot.edit_message_text("Restarted Successfully!", chat_id, msg_id)
+        bot.edit_message_text("System Rebooted All Service Has been Restarted", chat_id, msg_id)
         osremove(".restartmsg")
     elif not notifier_dict and AUTHORIZED_CHATS:
         for id_ in AUTHORIZED_CHATS:
             try:
-                bot.sendMessage(id_, "Bot Restarted!", 'HTML')
+                bot.sendMessage(id_, "System Rebooted All Service Has been Restarted in - 10s", 'HTML')
             except Exception as e:
                 LOGGER.error(e)
 
