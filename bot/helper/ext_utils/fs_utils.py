@@ -57,11 +57,11 @@ def clean_all():
 
 def exit_clean_up(signal, frame):
     try:
-        LOGGER.info("Please wait, while we clean up the downloads and stop running downloads")
+        LOGGER.info("Man Please wait Take Cup of Coffee ☕️, while we clean up the downloads and stop running downloads")
         clean_all()
         sysexit(0)
     except KeyboardInterrupt:
-        LOGGER.warning("Force Exiting before the cleanup finishes!")
+        LOGGER.warning("Bro - Force Exiting before the cleanup finishes!")
         sysexit(1)
 
 def clean_unwanted(path: str):
@@ -92,7 +92,7 @@ def get_base_name(orig_path: str):
         ext = ext[0]
         return re_split(ext + '$', orig_path, maxsplit=1, flags=I)[0]
     else:
-        raise NotSupportedExtractionArchive('File format not supported for extraction')
+        raise NotSupportedExtractionArchive('Bro - File format not supported for extraction')
 
 def get_mime_type(file_path):
     mime = Magic(mime=True)
@@ -156,7 +156,7 @@ def split_file(path, size, file_, dirpath, split_size, listener, start_time=0, i
                     pass
                 return split_file(path, size, file_, dirpath, split_size, listener, start_time, i, True, True)
             elif listener.suproc.returncode != 0:
-                LOGGER.warning(f"Unable to split this video, if it's size less than {MAX_SPLIT_SIZE} will be uploaded as it is. Path: {path}")
+                LOGGER.warning(f"Bro - Unable to split this video, if it's size less than {MAX_SPLIT_SIZE} But will be uploaded as it is. Path: {path}")
                 try:
                     osremove(out_path)
                 except:
@@ -170,10 +170,10 @@ def split_file(path, size, file_, dirpath, split_size, listener, start_time=0, i
                 return split_file(path, size, file_, dirpath, split_size, listener, start_time, i, True, noMap)
             lpd = get_media_info(out_path)[0]
             if lpd == 0:
-                LOGGER.error(f'Something went wrong while splitting, mostly file is corrupted. Path: {path}')
+                LOGGER.error(f'Bro - Something went wrong while splitting, mostly I think file is corrupted Hmmmm. Path: {path}')
                 break
             elif duration == lpd:
-                LOGGER.warning(f"This file has been splitted with default stream and audio, so you will only see one part with less size from orginal one because it doesn't have all streams and audios. This happens mostly with MKV videos. noMap={noMap}. Path: {path}")
+                LOGGER.warning(f"Bro - This file has been splitted with default stream and audio, so you will only see one part with less size from orginal one because it doesn't have all streams and audios. This happens mostly with MKV videos. noMap={noMap}. Path: {path}")
                 break
             elif lpd <= 4:
                 osremove(out_path)
