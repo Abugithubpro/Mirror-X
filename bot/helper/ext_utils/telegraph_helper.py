@@ -37,7 +37,7 @@ class TelegraphHelper:
                 html_content=content
            )
         except RetryAfterError as st:
-            LOGGER.warning(f'Telegraph Flood control exceeded. I will sleep for {st.retry_after} seconds.')
+            LOGGER.warning(f'Bro - Telegraph Service Flood control exceeded. I Will Nap For {st.retry_after} s Zzz')
             sleep(st.retry_after)
             return self.create_page(title, content)
 
@@ -51,7 +51,7 @@ class TelegraphHelper:
                 html_content=content
             )
         except RetryAfterError as st:
-            LOGGER.warning(f'Telegraph Flood control exceeded. I will sleep for {st.retry_after} seconds.')
+            LOGGER.warning(f'Bro - Telegraph Service Flood control exceeded. I Will Nap For {st.retry_after} s Zzz')
             sleep(st.retry_after)
         return self.edit_page(path, title, content)
 
@@ -61,18 +61,18 @@ class TelegraphHelper:
         num_of_path = len(path)
         for content in telegraph_content :
             if nxt_page == 1 :
-                content += f'<b><a href="https://graph.org/{path[nxt_page]}">Next</a></b>'
+                content += f'<b><a href="https://graph.org/{path[nxt_page]}"> → </a></b>'
                 nxt_page += 1
             else :
                 if prev_page <= num_of_path:
-                    content += f'<b><a href="https://graph.org/{path[prev_page]}">Prev</a></b>'
+                    content += f'<b><a href="https://graph.org/{path[prev_page]}"> ← </a></b>'
                     prev_page += 1
                 if nxt_page < num_of_path:
-                    content += f'<b> | <a href="https://graph.org/{path[nxt_page]}">Next</a></b>'
+                    content += f'<b> ● <a href="https://graph.org/{path[nxt_page]}"> → </a></b>'
                     nxt_page += 1
             self.edit_page(
                 path = path[prev_page],
-                title = 'Helios Mirror Torrent Search',
+                title = 'Github database',
                 content=content
             )
         return
@@ -80,6 +80,6 @@ class TelegraphHelper:
 try:
     telegraph=TelegraphHelper(f'{AUTHOR_NAME}', f'{AUTHOR_URL}')
 except Exception as err:
-    LOGGER.warning(f"Can't Create Telegraph Account: {err}")
+    LOGGER.warning(f"Bro Can't Create Telegraph Account Hmm !: {err}")
     telegraph = None
     pass
