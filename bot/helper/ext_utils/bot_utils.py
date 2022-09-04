@@ -20,26 +20,26 @@ PAGE_NO = 1
 
 
 class MirrorStatus:
-    STATUS_UPLOADING = "Up.."
-    STATUS_DOWNLOADING = "Down.."
-    STATUS_CLONING = "Cloning.."
-    STATUS_WAITING = "Queue"
-    STATUS_PAUSED = "Pause"
-    STATUS_ARCHIVING = "Archiving.."
-    STATUS_EXTRACTING = "Extracting.."
-    STATUS_SPLITTING = "Spliting.."
-    STATUS_CHECKING = "CheckUp"
-    STATUS_SEEDING = "Seed"
+    STATUS_UPLOADING = "𝗥𝗲𝗰𝗲𝗶𝘃𝗶𝗻𝗴 𝗙𝗶𝗹𝗲 𝗙𝗿𝗼𝗺 𝗦𝗲𝗿𝘃𝗲𝗿"
+    STATUS_DOWNLOADING = "𝗦𝗲𝗻𝗱𝗶𝗻𝗴 𝗙𝗶𝗹𝗲 𝗧𝗼 𝗦𝗲𝗿𝘃𝗲𝗿"
+    STATUS_CLONING = "𝗖𝗹𝗼𝗻𝗶𝗻𝗴 𝗙𝗶𝗹𝗲 𝗙𝗿𝗼𝗺 𝗚𝗼𝗼𝗴𝗹𝗲 / 𝗔𝗽𝗽𝗗𝗿𝗶𝘃𝗲 !"
+    STATUS_WAITING = "𝗪𝗮𝗶𝘁𝗶𝗻𝗴 𝗖𝗵𝗲𝗰𝗸𝗶𝗻𝗴 𝗙𝗶𝗹𝗲"
+    STATUS_PAUSED = "𝗣𝗿𝗼𝗰𝗲𝘀𝘀𝗶𝗻𝗴 𝗖𝗮𝗻𝗰𝗲𝗹"
+    STATUS_ARCHIVING = "𝗙𝗶𝗹𝗲 𝗜𝘀 𝗔𝗿𝗰𝗵𝗶𝘃𝗶𝗻𝗴 / 𝗭𝗶𝗽𝗶𝗻𝗴"
+    STATUS_EXTRACTING = "𝗙𝗶𝗹𝗲 𝗜𝘀 𝗘𝘅𝘁𝗿𝗮𝗰𝘁𝗶𝗻𝗴 / 𝗨𝗻𝘇𝗶𝗽𝗶𝗻𝗴"
+    STATUS_SPLITTING = "𝗙𝗶𝗹𝗲 𝗦𝗽𝗹𝗶𝘁𝘁𝗶𝗻𝗴"
+    STATUS_CHECKING = "𝗦𝗲𝗮𝗿𝗰𝗵𝗶𝗻𝗴 𝗙𝗶𝗹𝗲"
+    STATUS_SEEDING = "𝗙𝗶𝗹𝗲 𝗢𝗻 𝗦𝗲𝗲𝗱"
 class EngineStatus:
-    STATUS_ARIA = "Aria2c"
-    STATUS_GD = "Google Api"
-    STATUS_MEGA = "Mega Api"
-    STATUS_QB = "Bittorrent"
-    STATUS_TG = "Pyrogram"
-    STATUS_YT = "YT-dlp"
-    STATUS_EXT = "pExtract"
-    STATUS_SPLIT = "FFmpeg"
-    STATUS_ZIP = "p7zip"
+    STATUS_ARIA = "𝘾𝙤𝙣𝙣𝙚𝙘𝙩𝙚𝙙 𝙌𝙪𝙖𝙙-9 𝙀𝙂𝙉"
+    STATUS_GD = "𝘾𝙤𝙣𝙣𝙚𝙘𝙩𝙚𝙙 𝙂𝙤𝙤𝙜𝙡𝙚 𝙀𝙂𝙉"
+    STATUS_MEGA = "𝘾𝙤𝙣𝙣𝙚𝙘𝙩𝙚𝙙 𝙈𝙚𝙜𝙖 𝘽𝙞𝙩 𝙀𝙂𝙉"
+    STATUS_QB = "𝘾𝙤𝙣𝙣𝙚𝙘𝙩𝙚𝙙 𝙐𝙩-𝘽𝙞𝙩 𝙀𝙂𝙉"
+    STATUS_TG = "𝘾𝙤𝙣𝙣𝙚𝙘𝙩𝙚𝙙 𝙂𝙞𝙩𝙝𝙪𝙗 𝙀𝙂𝙉"
+    STATUS_YT = "𝘾𝙤𝙣𝙣𝙚𝙘𝙩𝙚𝙙 𝙔𝙤𝙪𝙏𝙪𝙗𝙚 𝙀𝙂𝙉"
+    STATUS_EXT = "𝘾𝙤𝙣𝙣𝙚𝙘𝙩𝙚𝙙 𝙅𝙖𝙫𝙖 𝙀𝙂𝙉"
+    STATUS_SPLIT = "𝘾𝙤𝙣𝙣𝙚𝙘𝙩𝙚𝙙 𝙋𝙝𝙮𝙩𝙝𝙤𝙣 𝙀𝙂𝙉"
+    STATUS_ZIP = "𝘾𝙤𝙣𝙣𝙚𝙘𝙩𝙚𝙙 𝙅𝙖𝙫𝙖 𝙀𝙂𝙉"
 
 SIZE_UNITS = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
 
@@ -71,7 +71,7 @@ def get_readable_file_size(size_in_bytes) -> str:
     try:
         return f'{round(size_in_bytes, 2)}{SIZE_UNITS[index]}'
     except IndexError:
-        return 'File too large'
+        return 'Bro - File Is too large'
 
 def getDownloadByGid(gid):
     with download_dict_lock:
