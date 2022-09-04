@@ -1,7 +1,7 @@
 
 # ⚡️Features:
 
-## By [abu](https://github.com/Abugithubpro)
+## By [arsh](https://github.com/Abugithubpro)
 
 - Simple clean UI
 - New UI
