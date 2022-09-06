@@ -23,7 +23,7 @@ def _mirror_leech(bot, message, isZip=False, extract=False, isQbit=False, isLeec
     buttons = ButtonMaker()
     if BOT_PM and message.chat.type != 'private':
         try:
-            msg1 = f'Added your Requested link to Download\n'
+            msg1 = f'Bro - Added your Requested link to Download\n'
             send = bot.sendMessage(message.from_user.id, text=msg1)
             send.delete()
         except Exception as e:
@@ -32,15 +32,15 @@ def _mirror_leech(bot, message, isZip=False, extract=False, isQbit=False, isLeec
             b_uname = bot_d.username
             uname = message.from_user.mention_html(message.from_user.first_name)
             botstart = f"http://t.me/{b_uname}"
-            buttons.buildbutton("Click Here to Start Me", f"{botstart}")
-            startwarn = f"<b>Dear {uname}, Start me in PM to use me.</b>"
+            buttons.buildbutton("Confirm", f"{botstart}")
+            startwarn = f"<b>Bro {uname},  Every Leeching Files Is Encrypted Directly You ! Nobody Can Access Your Files</b>"
             mesg = sendMarkup(startwarn, bot, message, buttons.build_menu(2))
             sleep(15)
             mesg.delete()
             message.delete()
             return
-    if message.chat.type == 'private' and len(LEECH_LOG) == 0 and isLeech and MAX_SPLIT_SIZE == 4194304000:
-        text = f"Leech Log is Empty you Can't use bot in PM."
+    if message.chat.type == '⚡️' and len(LEECH_LOG) == 0 and isLeech and MAX_SPLIT_SIZE == 4194304000:
+        text = f" "
         sendMessage(text, bot, message)
         return
     mesg = message.text.split('\n')
@@ -171,7 +171,7 @@ def _mirror_leech(bot, message, isZip=False, extract=False, isQbit=False, isLeec
         if content_type is None or re_match(r'text/html|text/plain', content_type):
             try:
                 link = direct_link_generator(link)
-                LOGGER.info(f"Generated link: {link}")
+                LOGGER.info(f"Generated link  {link}")
             except DirectDownloadLinkException as e:
                 LOGGER.info(str(e))
                 if str(e).startswith('ERROR:'):
@@ -191,7 +191,7 @@ def _mirror_leech(bot, message, isZip=False, extract=False, isQbit=False, isLeec
         if MEGA_KEY is not None:
             Thread(target=MegaDownloader(listener).add_download, args=(link, f'{DOWNLOAD_DIR}{listener.uid}/')).start()
         else:
-            sendMessage('MEGA_API_KEY not Provided!', bot, message)
+            sendMessage('MEGA Links Not added', bot, message)
     elif isQbit:
         Thread(target=QbDownloader(listener).add_qb_torrent, args=(link, f'{DOWNLOAD_DIR}{listener.uid}',
                                                                    select, ratio, seed_time)).start()
