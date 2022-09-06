@@ -21,7 +21,7 @@ def _ytdl(bot, message, isZip=False, isLeech=False):
     buttons = ButtonMaker()
     if BOT_PM and message.chat.type != 'private':
         try:
-            msg1 = f'Added your Requested link to Download\n'
+            msg1 = f'Bro - Added your Requested link\n'
             send = bot.sendMessage(user_id, text=msg1)
             send.delete()
         except Exception as e:
@@ -30,8 +30,8 @@ def _ytdl(bot, message, isZip=False, isLeech=False):
             b_uname = bot_d.username
             uname = message.from_user.mention_html(message.from_user.first_name)
             botstart = f"http://t.me/{b_uname}"
-            buttons.buildbutton("Click Here to Start Me", f"{botstart}")
-            startwarn = f"<b>Dear {uname}, Start me in PM to use me.</b>"
+            buttons.buildbutton("Confirm", f"{botstart}")
+            startwarn = f"<b>Bro {uname}, Every Leeching Files Is Encrypted Directly You ! Nobody Can Access Your Files</b>"
             mesg = sendMarkup(startwarn, bot, message, buttons.build_menu(2))
             sleep(15)
             mesg.delete()
@@ -121,12 +121,12 @@ Check all arguments from this <a href='https://github.com/yt-dlp/yt-dlp/blob/mas
             video_format = f"bv*[height<=?{i}][ext=webm]+ba/b[height<=?{i}]"
             buttons.sbutton(f"{i}-webm", f"qu {msg_id} {video_format} t")
         buttons.sbutton("MP3", f"qu {msg_id} mp3 t")
-        buttons.sbutton("Best Videos", f"qu {msg_id} {best_video} t")
-        buttons.sbutton("Best Audios", f"qu {msg_id} {best_audio} t")
-        buttons.sbutton("Cancel", f"qu {msg_id} cancel")
+        buttons.sbutton("⚡️Videos", f"qu {msg_id} {best_video} t")
+        buttons.sbutton("⚡️Audios", f"qu {msg_id} {best_audio} t")
+        buttons.sbutton("Cancel !", f"qu {msg_id} cancel")
         YTBUTTONS = buttons.build_menu(3)
         listener_dict[msg_id] = [listener, user_id, link, name, YTBUTTONS, args]
-        bmsg = sendMarkup('Choose Playlist Videos Quality:', bot, message, YTBUTTONS)
+        bmsg = sendMarkup('Bro - Choose Playlist Videos Quality ', bot, message, YTBUTTONS)
     else:
         formats = result.get('formats')
         formats_dict = {}
@@ -168,12 +168,12 @@ Check all arguments from this <a href='https://github.com/yt-dlp/yt-dlp/blob/mas
                 else:
                     buttons.sbutton(b_name, f"qu {msg_id} dict {b_name}")
         buttons.sbutton("MP3", f"qu {msg_id} mp3")
-        buttons.sbutton("Best Video", f"qu {msg_id} {best_video}")
-        buttons.sbutton("Best Audio", f"qu {msg_id} {best_audio}")
-        buttons.sbutton("Cancel", f"qu {msg_id} cancel")
+        buttons.sbutton("⚡Video", f"qu {msg_id} {best_video}")
+        buttons.sbutton("⚡️Audio", f"qu {msg_id} {best_audio}")
+        buttons.sbutton("Cancel!", f"qu {msg_id} cancel")
         YTBUTTONS = buttons.build_menu(2)
         listener_dict[msg_id] = [listener, user_id, link, name, YTBUTTONS, args, formats_dict]
-        bmsg = sendMarkup('Choose Video Quality:', bot, message, YTBUTTONS)
+        bmsg = sendMarkup('Bro - Choose Video Quality ', bot, message, YTBUTTONS)
 
     Thread(target=_auto_cancel, args=(bmsg, msg_id)).start()
     Thread(target=auto_delete_upload_message, args=(bot, message, bmsg)).start()
@@ -195,7 +195,7 @@ def _qual_subbuttons(task_id, b_name, msg):
     buttons.sbutton("Back", f"qu {task_id} back")
     buttons.sbutton("Cancel", f"qu {task_id} cancel")
     SUBBUTTONS = buttons.build_menu(2)
-    editMessage(f"Choose Bit rate for <b>{b_name}</b>:", msg, SUBBUTTONS)
+    editMessage(f"Bro - Choose Bit rate for <b>{b_name}</b> ", msg, SUBBUTTONS)
 
 def _mp3_subbuttons(task_id, msg, playlist=False):
     buttons = button_build.ButtonMaker()
@@ -211,7 +211,7 @@ def _mp3_subbuttons(task_id, msg, playlist=False):
     buttons.sbutton("Back", f"qu {task_id} back")
     buttons.sbutton("Cancel", f"qu {task_id} cancel")
     SUBBUTTONS = buttons.build_menu(2)
-    editMessage(f"Choose Audio{i} Bitrate:", msg, SUBBUTTONS)
+    editMessage(f"Bro - Choose Audio{i} Bitrate ", msg, SUBBUTTONS)
 
 def select_format(update, context):
     query = update.callback_query
@@ -223,10 +223,10 @@ def select_format(update, context):
     try:
         task_info = listener_dict[task_id]
     except:
-        return editMessage("This is an old task", msg)
+        return editMessage("Bro - Error This is an old task", msg)
     uid = task_info[1]
     if user_id != uid and not CustomFilters._owner_query(user_id):
-        return query.answer(text="This task is not for you!", show_alert=True)
+        return query.answer(text="Error This task is not for you!", show_alert=True)
     elif data[2] == "dict":
         query.answer()
         b_name = data[3]
@@ -234,7 +234,7 @@ def select_format(update, context):
         return
     elif data[2] == "back":
         query.answer()
-        return editMessage('Choose Video Quality:', msg, task_info[4])
+        return editMessage('Bro - Choose Video Quality ', msg, task_info[4])
     elif data[2] == "mp3":
         query.answer()
         if len(data) == 4:
@@ -245,7 +245,7 @@ def select_format(update, context):
         return
     elif data[2] == "cancel":
         query.answer()
-        editMessage('Task has been cancelled.', msg)
+        editMessage('Task cancelled Bot Is on Rest Mode', msg)
     else:
         query.answer()
         listener = task_info[0]
@@ -266,7 +266,7 @@ def _auto_cancel(msg, msg_id):
     sleep(120)
     try:
         del listener_dict[msg_id]
-        editMessage('Timed out! Task has been cancelled.', msg)
+        editMessage('Error Timed out! Task has been cancelled', msg)
     except:
         pass
 
